@@ -1,7 +1,7 @@
 # Проект «Большое путешествие»
 
 * Студент: [Islam Karimov](https://up.htmlacademy.ru/ecmascript/15/user/1749705).
-* Наставник: `Неизвестно`.
+* Наставник: [Ruslan Malogulko](https://htmlacademy.ru/profile/id9728).
 
 ---
 
