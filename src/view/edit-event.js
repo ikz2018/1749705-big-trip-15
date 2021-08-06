@@ -1,5 +1,7 @@
-export const createEditEventTemplate = () => (
-  `<li class="trip-events__item">
+export const createEditEventTemplate = (event) => {
+  const {offerTitle} = event;
+
+  return `<li class="trip-events__item">
     <form class="event event--edit" action="#" method="post">
       <header class="event__header">
         <div class="event__type-wrapper">
@@ -92,7 +94,7 @@ export const createEditEventTemplate = () => (
             <div class="event__offer-selector">
               <input class="event__offer-checkbox  visually-hidden" id="event-offer-luggage-1" type="checkbox" name="event-offer-luggage" checked>
               <label class="event__offer-label" for="event-offer-luggage-1">
-                <span class="event__offer-title">Add luggage</span>
+                <span class="event__offer-title">${offerTitle}</span>
                 &plus;&euro;&nbsp;
                 <span class="event__offer-price">50</span>
               </label>
@@ -137,5 +139,5 @@ export const createEditEventTemplate = () => (
         </section>
       </section>
     </form>
-  </li>`
-);
+  </li>`;
+};
