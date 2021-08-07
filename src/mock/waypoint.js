@@ -1,9 +1,5 @@
-const getRandomInteger = (a = 0, b = 1) => {
-  const lower = Math.ceil(Math.min(a, b));
-  const upper = Math.floor(Math.max(a, b));
-
-  return Math.floor(lower + Math.random() * (upper - lower + 1));
-};
+import {dayjs} from 'dayjs';
+import {getRandomInteger} from '../utils';
 
 const generateType = () => {
   const types = [
@@ -51,31 +47,6 @@ const generateTown = () => {
   return towns[randomIndex];
 };
 
-const generateOffer = () => {
-  const offers = [
-    {
-      'title': 'Choose meal',
-      'price': 180,
-    }, {
-      'title': 'Upgrade to comfort class',
-      'price': 50,
-    }, {
-      'title': 'Choose seats',
-      'price': 5,
-    }, {
-      'title': 'Train by train',
-      'price': 30,
-    }, {
-      'title': 'Add luggage',
-      'price': 40,
-    },
-  ];
-
-  const randomIndex = getRandomInteger(0, offers.length - 1);
-
-  return offers[randomIndex];
-};
-
 const generateTitle = () => {
   const titles = [
     'Choose meal',
@@ -92,12 +63,12 @@ const generateTitle = () => {
 
 const generatePrice = () => {
   const price = getRandomInteger(200, 1000);
-  return price;
+  return Math.round(price / 10) * 10;
 };
 
 const generateOfferPrice = () => {
   const price = getRandomInteger(20, 100);
-  return price;
+  return Math.round(price / 10) * 10;
 };
 
 const DESTINATION = {
@@ -111,17 +82,21 @@ const DESTINATION = {
   ],
 };
 
-export const generatePoint = () => ({
-  basePrice: generatePrice(),
-  dateFrom: '2019-07-10T22:55:56.845Z',
-  dateTo: '2019-07-11T11:22:13.375Z',
-  destination: DESTINATION,
-  destinationName: DESTINATION.name,
-  destinationDescription: DESTINATION.description,
-  id: '0',
-  isFavorite: Boolean(getRandomInteger(0, 1)),
-  offers: generateOffer(),
-  type: generateType(),
-  offerTitle: generateTitle(),
-  offerPrice: generateOfferPrice(),
-});
+export const generatePoint = () => {
+  const startDate = dayjs().add(getRandomInteger(-5, 10), 'day').add(getRandomInteger(0, 23), 'hour').add(getRandomInteger(0, 59), 'minute');
+  const finishDate = startDate.add(getRandomInteger(0, 3), 'day').add(getRandomInteger(0, 23), 'hour').add(getRandomInteger(0, 59), 'minute');
+
+  return {
+    basePrice: generatePrice(),
+    dateFrom: startDate,
+    dateTo: finishDate,
+    destination: DESTINATION,
+    destinationName: DESTINATION.name,
+    destinationDescription: DESTINATION.description,
+    id: '0',
+    isFavorite: Boolean(getRandomInteger(0, 1)),
+    type: generateType(),
+    offerTitle: generateTitle(),
+    offerPrice: generateOfferPrice(),
+  };
+};

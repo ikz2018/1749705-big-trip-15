@@ -10,7 +10,7 @@ import {createTripInfoTemplate} from './view/trip-info.js';
 import {createTripSortTemplate} from './view/trip-sort.js';
 import {generatePoint} from './mock/waypoint.js';
 
-const TRIP_EVENTS_COUNT = 3;
+const TRIP_EVENTS_COUNT = 20;
 const TRIP_MAIN_ELEMENT = document.querySelector('.trip-main');
 const TRIP_CONTROLS_NAVIGATION_ELEMENT = TRIP_MAIN_ELEMENT.querySelector('.trip-controls__navigation');
 const TRIP_CONTROLS_FILTERS_ELEMENT = TRIP_MAIN_ELEMENT.querySelector('.trip-controls__filters');
@@ -34,8 +34,8 @@ render(TRIP_EVENTS_ELEMENT, createTripSortTemplate(), 'afterbegin');
 render(TRIP_EVENTS_ELEMENT, createTripEventsListTemplate(), 'beforeend');
 
 const TRIP_EVENTS_LIST_ELEMENT = TRIP_EVENTS_ELEMENT.querySelector('.trip-events__list');
-render(TRIP_EVENTS_LIST_ELEMENT, createEditEventTemplate(), 'afterbegin');
-render(TRIP_EVENTS_LIST_ELEMENT, createAddEventTemplate(), 'afterbegin');
+render(TRIP_EVENTS_LIST_ELEMENT, createEditEventTemplate(points[0]), 'afterbegin');
+render(TRIP_EVENTS_LIST_ELEMENT, createAddEventTemplate(points[1]), 'afterbegin');
 
 for (let i = 0; i < TRIP_EVENTS_COUNT; i++) {
   render(TRIP_EVENTS_LIST_ELEMENT, createTripEventsItemTemplate(points[i]), 'beforeend');
