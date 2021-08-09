@@ -20,9 +20,9 @@ export const createTripEventsItemTemplate = (point) => {
       <h3 class="event__title">${type} ${destinationName}</h3>
       <div class="event__schedule">
         <p class="event__time">
-          <time class="event__start-time" datetime="2019-03-18T10:30">${dateFrom.format('HH')}:${dateFrom.format('mm')}</time>
+          <time class="event__start-time" datetime="2019-03-18T10:30">${dateFrom.format('HH:mm')}</time>
           &mdash;
-          <time class="event__end-time" datetime="2019-03-18T11:00">${dateTo.format('HH')}:${dateTo.format('mm')}</time>
+          <time class="event__end-time" datetime="2019-03-18T11:00">${dateTo.format('HH:mm')}</time>
         </p>
         <p class="event__duration">${getDuration(dateFrom, dateTo)}</p>
       </div>

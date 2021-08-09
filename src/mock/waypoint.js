@@ -72,9 +72,9 @@ const generateOfferPrice = () => {
 };
 
 const DESTINATION = {
-  'description': generateDescription(),
-  'name': generateTown(),
-  'pictures': [
+  description: generateDescription(),
+  name: generateTown(),
+  pictures: [
     {
       'src': 'http://picsum.photos/300/200?r=0.0762563005163317',
       'description': `${generateTown() } is great city`,

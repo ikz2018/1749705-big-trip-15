@@ -16,10 +16,14 @@ export const getDuration = (startDate, finishDate) => { // преобразов�
   hoursNumber = hoursNumber > 9 ? hoursNumber : `0${hoursNumber}`;
   minutesNumber = minutesNumber > 9 ? minutesNumber : `0${minutesNumber}`;
 
-  let duration = `${daysNumber}D ${hoursNumber}H ${minutesNumber}M`;
-  duration = daysNumber === '00' ? `${hoursNumber}H ${minutesNumber}M` : duration;
+  let duration;
+
   if (daysNumber === '00' && hoursNumber === '00') {
     duration =  `${minutesNumber}M`;
+  } else if (daysNumber === '00') {
+    duration = `${hoursNumber}H ${minutesNumber}M`;
+  } else {
+    duration = `${daysNumber}D ${hoursNumber}H ${minutesNumber}M`;
   }
   return duration;
 };
