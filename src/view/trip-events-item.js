@@ -1,5 +1,7 @@
+import {getDuration} from '../utils';
+
 export const createTripEventsItemTemplate = (point) => {
-  const {basePrice, type, destinationName, isFavorite, offerTitle, offerPrice} = point;
+  const {basePrice, type, destinationName, isFavorite, offerTitle, offerPrice, dateFrom, dateTo} = point;
 
   const isButtonFavorite = () => {
     if (isFavorite === true) {
@@ -11,18 +13,18 @@ export const createTripEventsItemTemplate = (point) => {
 
   return `<li class="trip-events__item">
     <div class="event">
-      <time class="event__date" datetime="2019-03-18">MAR 18</time>
+      <time class="event__date" datetime="2019-03-18">${dateFrom.format('MMM')} ${dateFrom.format('D')}</time>
       <div class="event__type">
         <img class="event__type-icon" width="42" height="42" src="img/icons/taxi.png" alt="Event type icon">
       </div>
       <h3 class="event__title">${type} ${destinationName}</h3>
       <div class="event__schedule">
         <p class="event__time">
-          <time class="event__start-time" datetime="2019-03-18T10:30">10:30</time>
+          <time class="event__start-time" datetime="2019-03-18T10:30">${dateFrom.format('HH')}:${dateFrom.format('mm')}</time>
           &mdash;
-          <time class="event__end-time" datetime="2019-03-18T11:00">11:00</time>
+          <time class="event__end-time" datetime="2019-03-18T11:00">${dateTo.format('HH')}:${dateTo.format('mm')}</time>
         </p>
-        <p class="event__duration">30M</p>
+        <p class="event__duration">${getDuration(dateFrom, dateTo)}</p>
       </div>
       <p class="event__price">
         &euro;&nbsp;<span class="event__price-value">${basePrice}</span>

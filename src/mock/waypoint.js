@@ -1,4 +1,4 @@
-import {dayjs} from 'dayjs';
+import dayjs from 'dayjs';
 import {getRandomInteger} from '../utils';
 
 const generateType = () => {
