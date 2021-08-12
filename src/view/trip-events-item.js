@@ -1,4 +1,4 @@
-import {getDuration} from '../utils';
+import {getDuration, createElement} from '../utils';
 
 export const createTripEventsItemTemplate = (point) => {
   const {basePrice, type, destinationName, isFavorite, offerTitle, offerPrice, dateFrom, dateTo} = point;
@@ -49,3 +49,26 @@ export const createTripEventsItemTemplate = (point) => {
     </div>
   </li>`;
 };
+
+export default class TripEventsItem {
+  constructor(point) {
+    this._point = point;
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createTripEventsItemTemplate(this._point);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}
