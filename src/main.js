@@ -1,4 +1,3 @@
-//import {createAddEventTemplate} from './view/add-event.js';
 import TripEditView from './view/edit-event.js';
 import SiteMenuView from './view/site-menu.js';
 import TripEventsItemView from './view/trip-events-item.js';
