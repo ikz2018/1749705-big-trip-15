@@ -1,4 +1,6 @@
-export const createEditEventTemplate = (event) => {
+import {createElement} from '../utils.js';
+
+const createEditEventTemplate = (event) => {
   const {offerTitle, destinationDescription, destinationName, basePrice, dateFrom, dateTo} = event;
 
   return `<li class="trip-events__item">
@@ -141,3 +143,26 @@ export const createEditEventTemplate = (event) => {
     </form>
   </li>`;
 };
+
+export default class TripEdit {
+  constructor(event) {
+    this._event = event;
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createEditEventTemplate(this._event);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}
