@@ -80,7 +80,6 @@ if (TRIP_EVENTS_COUNT === 0) {
   for (let i = 0; i < TRIP_EVENTS_COUNT; i++) {
     renderTask(TRIP_EVENTS_LIST_ELEMENT, points[i]);
   }
-=======
 render(TRIP_EVENTS_ELEMENT, new TripSortView().getElement(), RenderPosition.AFTERBEGIN);
 render(TRIP_EVENTS_ELEMENT, new TripEventsListView().getElement(), RenderPosition.BEFOREEND);
 
